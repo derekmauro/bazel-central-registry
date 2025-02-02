@@ -7,6 +7,17 @@
 #ifndef EVENT2_EVENT_CONFIG_LINUX_H_INCLUDED_
 #define EVENT2_EVENT_CONFIG_LINUX_H_INCLUDED_
 
+/* For glibc feature detection */
+#define _GNU_SOURCE 1
+#include <features.h>
+
+#if defined(__GLIBC__) && defined(__GLIBC_MINOR__)
+#define EVENT__GLIBC_PREREQ(maj, min) \
+  ((__GLIBC__ << 16) + __GLIBC_MINOR__ >= ((maj) << 16) + (min))
+#else
+#define EVENT__GLIBC_PREREQ(maj, min) 0
+#endif
+
 /* Numeric representation of the version */
 #define EVENT__NUMERIC_VERSION 0x02010c00
 #define EVENT__PACKAGE_VERSION "2.1.12"
@@ -46,10 +57,14 @@
 #define EVENT__HAVE_ACCEPT4 1
 
 /* Define to 1 if you have the `arc4random' function. */
+#if EVENT__GLIBC_PREREQ(2, 36)
 #define EVENT__HAVE_ARC4RANDOM 1
+#endif
 
 /* Define to 1 if you have the `arc4random_buf' function. */
+#if EVENT__GLIBC_PREREQ(2, 36)
 #define EVENT__HAVE_ARC4RANDOM_BUF 1
+#endif
 
 /* Define to 1 if you have the `arc4random_addrandom' function. */
 /* #undef EVENT__HAVE_ARC4RANDOM_ADDRANDOM */
@@ -74,7 +89,9 @@
 #define EVENT__HAVE_DECL_KERN_ARND 0
 
 /* Define to 1 if you have `getrandom' function. */
+#if EVENT__GLIBC_PREREQ(2, 25)
 #define EVENT__HAVE_GETRANDOM 1
+#endif
 
 /* Define if /dev/poll is available */
 /* #undef EVENT__HAVE_DEVPOLL */
@@ -451,13 +468,13 @@
 #define EVENT__SIZEOF_PTHREAD_T 8
 
 /* The size of a `int', as computed by sizeof. */
-#define EVENT__SIZEOF_INT 4
+#define EVENT__SIZEOF_INT __SIZEOF_INT__
 
 /* The size of a `long', as computed by sizeof. */
-#define EVENT__SIZEOF_LONG 8
+#define EVENT__SIZEOF_LONG __SIZEOF_LONG__
 
 /* The size of a `long long', as computed by sizeof. */
-#define EVENT__SIZEOF_LONG_LONG 8
+#define EVENT__SIZEOF_LONG_LONG __SIZEOF_LONG_LONG__
 
 /* The size of `off_t', as computed by sizeof. */
 #define EVENT__SIZEOF_OFF_T 8
@@ -466,10 +483,10 @@
 
 
 /* The size of a `short', as computed by sizeof. */
-#define EVENT__SIZEOF_SHORT 2
+#define EVENT__SIZEOF_SHORT __SIZEOF_SHORT__
 
 /* The size of `size_t', as computed by sizeof. */
-#define EVENT__SIZEOF_SIZE_T 8
+#define EVENT__SIZEOF_SIZE_T __SIZEOF_SIZE_T__
 
 /* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
 /* #undef EVENT__TIME_WITH_SYS_TIME */

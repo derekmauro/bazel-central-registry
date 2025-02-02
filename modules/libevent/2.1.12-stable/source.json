@@ -4,10 +4,10 @@
     "patch_strip": 0,
     "integrity": "sha256-kubeG+nsF2Qo/SNnZ35hzv/C7hyxGQNQN6J9NGsEA7s=",
     "overlay": {
-        "BUILD.bazel": "sha256-Qfm1vxP8KVhB2mJZHepS89nZd4B/Yvu4z+xni6Jt23Y=",
+        "BUILD.bazel": "sha256-jzTzllqx37tfMAjICwLnyIflaG7Ui9pix+hZuAVE84Y=",
         "evconfig-private.h": "sha256-xSuJSPLs8SmWV/IEVv3YsRnnnI1sZv6RsoBM4yllgXo=",
         "evconfig-private_linux.h": "sha256-VyLJxZ9ek98XQPiCsBUL7jrGsFe/ivo93EXKRmqZ6oY=",
         "include/event2/event-config.h": "sha256-XNb7DTwTejsRb8gPBcd1+lqwS5OexvigerVsAuCk/+U=",
-        "include/event2/event-config_linux.h": "sha256-50xqUkirko8Fmubakk8EdvNERcfs+yUbLz9OyW90epQ="
+        "include/event2/event-config_linux.h": "sha256-h7BWfOMXeT6YyHbG2LMBCtyasOVFL7d+6sFjHypP6oQ="
     }
 }

@@ -1,9 +1,26 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+load("@rules_license//rules:license.bzl", "license")
+
 package(
     default_visibility = ["//visibility:private"],
     features = [
         "layering_check",
     ],
 )
+
+license(
+    name = "license",
+    license_kinds = [
+        "@rules_license//licenses/spdx:BSD-3-Clause",
+        "@rules_license//licenses/spdx:ISC",
+        "@rules_license//licenses/spdx:MIT",
+    ],
+    license_text = "LICENSE",
+)
+
+exports_files([
+    "LICENSE",
+])
 
 cc_library(
     name = "compat",
@@ -117,10 +134,7 @@ cc_library(
         # arc4random() is not available. It is not compiled by itself.
         "arc4random.c",
     ],
-    deps = select({
-        "@platforms//os:linux": [":compat"],
-        "//conditions:default": [],
-    }),
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -129,6 +143,7 @@ cc_library(
         "bufferevent_openssl.c",
         "openssl-compat.h",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":event",
         "@openssl//:ssl",
@@ -143,7 +158,53 @@ cc_library(
     linkopts = [
         "-pthread",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":event",
+    ],
+)
+
+cc_test(
+    name = "regress",
+    srcs = [
+        "test/regress.c",
+        "test/regress.gen.c",
+        "test/regress.gen.h",
+        "test/regress.h",
+        "test/regress_buffer.c",
+        "test/regress_bufferevent.c",
+        "test/regress_dns.c",
+        "test/regress_et.c",
+        "test/regress_finalize.c",
+        "test/regress_http.c",
+        "test/regress_listener.c",
+        "test/regress_main.c",
+        "test/regress_minheap.c",
+        "test/regress_rpc.c",
+        "test/regress_ssl.c",
+        "test/regress_testutils.c",
+        "test/regress_testutils.h",
+        "test/regress_thread.c",
+        "test/regress_thread.h",
+        "test/regress_util.c",
+        "test/regress_zlib.c",
+        "test/tinytest.c",
+        "test/tinytest.h",
+        "test/tinytest_local.h",
+        "test/tinytest_macros.h",
+    ] + select({
+        "@platforms//os:windows": [
+            "test/regress_iocp.c",
+        ],
+        "//conditions:default": [],
+    }),
+    copts = [
+    ],
+    deps = [
+        ":event",
+        ":event_openssl",
+        ":event_pthread",
+        "@openssl//:ssl",
+        "@zlib//:z",
     ],
 )
