@@ -20,6 +20,10 @@ made `evconfig-private.h` into a platform selector file. I did the same with
 used by the `#include` guards as well. These files get overlayed onto the tree
 in the Bazel Central Registry as patches.
 
+```shell
+${CC:-gcc} -dM -E - $@ < /dev/null
+```
+
 Next you will have to create the `BUILD.bazel` file. Commands like 
 ```
 ls -1 include/*.h | sort | awk '{ print "\""$0"\","}'
@@ -30,4 +34,5 @@ https://github.com/bazelbuild/bazel-central-registry/blob/main/docs/README.md ha
 
 ```
 bazel run -- //tools:update_integrity libevent
+bazel shutdown && bazel build --enable_bzlmod --registry="file:///home/dmauro/github/bazel-central-registry" --lockfile_mode=off @libevent//...
 ```

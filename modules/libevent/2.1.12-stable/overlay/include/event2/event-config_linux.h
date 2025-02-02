@@ -495,7 +495,7 @@
 #define EVENT__SIZEOF_SOCKLEN_T 4
 
 /* The size of 'void *', as computer by sizeof */
-#define EVENT__SIZEOF_VOID_P 8
+#define EVENT__SIZEOF_VOID_P __SIZEOF_POINTER__
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
