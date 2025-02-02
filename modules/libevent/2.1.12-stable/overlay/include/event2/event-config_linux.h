@@ -293,7 +293,9 @@
 #define EVENT__HAVE_STRING_H 1
 
 /* Define to 1 if you have the `strlcpy' function. */
+#if EVENT__GLIBC_PREREQ(2, 38)
 #define EVENT__HAVE_STRLCPY 1
+#endif
 
 /* Define to 1 if you have the `strsep' function. */
 #define EVENT__HAVE_STRSEP 1
@@ -465,7 +467,9 @@
 #endif
 
 /* The size of `pthread_t', as computed by sizeof. */
-#define EVENT__SIZEOF_PTHREAD_T 8
+/* There is no macro for this, but on Linux it is currently defined as */
+/* `unsigned long int` */
+#define EVENT__SIZEOF_PTHREAD_T __SIZEOF_LONG__
 
 /* The size of a `int', as computed by sizeof. */
 #define EVENT__SIZEOF_INT __SIZEOF_INT__
@@ -477,10 +481,11 @@
 #define EVENT__SIZEOF_LONG_LONG __SIZEOF_LONG_LONG__
 
 /* The size of `off_t', as computed by sizeof. */
-#define EVENT__SIZEOF_OFF_T 8
-
-#define EVENT__SIZEOF_SSIZE_T 8
-
+#ifdef _FILE_OFFSET_BITS
+#define EVENT__SIZEOF_OFF_T (_FILE_OFFSET_BITS / 8)
+#else
+#define EVENT__SIZEOF_OFF_T 4
+#endif
 
 /* The size of a `short', as computed by sizeof. */
 #define EVENT__SIZEOF_SHORT __SIZEOF_SHORT__
@@ -488,11 +493,18 @@
 /* The size of `size_t', as computed by sizeof. */
 #define EVENT__SIZEOF_SIZE_T __SIZEOF_SIZE_T__
 
+/* The size of `ssize_t', as computed by sizeof. */
+/* There is no macro for this. We could assume it is the same size as */
+/* size_t, but it is unused, so we might as well #undef it. */
+#undef EVENT__SIZEOF_SSIZE_T
+
 /* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
 /* #undef EVENT__TIME_WITH_SYS_TIME */
 
 /* The size of `socklen_t', as computed by sizeof. */
-#define EVENT__SIZEOF_SOCKLEN_T 4
+/* There is no macro for this, but it is usually 4. */
+/* Since it is unused, we might as well #undef it. */
+#undef EVENT__SIZEOF_SOCKLEN_T
 
 /* The size of 'void *', as computer by sizeof */
 #define EVENT__SIZEOF_VOID_P __SIZEOF_POINTER__
