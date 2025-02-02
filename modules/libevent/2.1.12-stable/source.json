@@ -1,0 +1,13 @@
+{
+    "url": "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz",
+    "strip_prefix": "libevent-2.1.12-stable",
+    "patch_strip": 0,
+    "integrity": "sha256-kubeG+nsF2Qo/SNnZ35hzv/C7hyxGQNQN6J9NGsEA7s=",
+    "overlay": {
+        "BUILD.bazel": "sha256-4788pCb/tkjM9HuAgOh41Sz6tkqFIV46zXix6XsEJI8=",
+        "evconfig-private.h": "sha256-xSuJSPLs8SmWV/IEVv3YsRnnnI1sZv6RsoBM4yllgXo=",
+        "evconfig-private_linux.h": "sha256-VyLJxZ9ek98XQPiCsBUL7jrGsFe/ivo93EXKRmqZ6oY=",
+        "include/event2/event-config.h": "sha256-XNb7DTwTejsRb8gPBcd1+lqwS5OexvigerVsAuCk/+U=",
+        "include/event2/event-config_linux.h": "sha256-50xqUkirko8Fmubakk8EdvNERcfs+yUbLz9OyW90epQ="
+    }
+}
