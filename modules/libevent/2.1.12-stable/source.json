@@ -4,12 +4,13 @@
     "patch_strip": 0,
     "integrity": "sha256-kubeG+nsF2Qo/SNnZ35hzv/C7hyxGQNQN6J9NGsEA7s=",
     "overlay": {
-        "BUILD.bazel": "sha256-+xATuPjoYDWB/5SItErW4IJ/vFeLkZXmoeVeLNnrWNQ=",
-        "evconfig-private.h": "sha256-NfrZnks/fxNn3w8xoA/0pwR8UxYXr+b2qY2HYFXKneY=",
+        "BUILD.bazel": "sha256-kDO3x+oF9LzXaU6fdI7PNLXxLLuvYWFkqHZBF8fg6OY=",
+        "evconfig-private.h": "sha256-gzvjoXuscAL7Z8ozPGIB2cS1Ro709qOARbyruqFTJnM=",
         "evconfig-private_apple.h": "sha256-3hSGZxKD9JfDy0O1Z2kYZnykPPmfx0bs+mGnvHHb/K8=",
         "evconfig-private_linux.h": "sha256-VyLJxZ9ek98XQPiCsBUL7jrGsFe/ivo93EXKRmqZ6oY=",
-        "include/event2/event-config.h": "sha256-4GbwehdX0pWLMof4FBDC2m59mKNSAqnpX8ifjwA2Hlo=",
-        "include/event2/event-config_apple.h": "sha256-IuRfUDEmqiVxAKBvIzauXQZ+RR/uiW7AszmJ0nT3Phw=",
-        "include/event2/event-config_linux.h": "sha256-9My4XVUPuW8L5X30lcIbAmjdizRtLr8ETQzOJ6eHE9M="
+        "include/event2/event-config.h": "sha256-haaBN0RcVy+BYU0pG9km24aBNI7hToG8l62WRNXRJ58=",
+        "include/event2/event-config_apple.h": "sha256-JjT9397XX0+9C/4shT74IB/Op8SeJ4BfIerZ+ulJGww=",
+        "include/event2/event-config_linux.h": "sha256-etWBz/wAhaa59D0eH2+x5ar3CfGlaIMR2xbSYW1Wt3g=",
+        "include/event2/event-config_msvc.h": "sha256-UctxSahIosofCE8mCF6p2YJV1OapGTtnFdczPUyKXOg="
     }
 }

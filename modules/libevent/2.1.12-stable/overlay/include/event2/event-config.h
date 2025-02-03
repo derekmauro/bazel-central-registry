@@ -5,6 +5,8 @@
 #include <event2/event-config_linux.h>
 #elif defined(__APPLE__)
 #include <event2/event-config_apple.h>
+#elif defined(_MSC_VER)
+#include <event2/event-config_msvc.h>
 #endif
 
 #endif  // EVENT2_EVENT_CONFIG_H_INCLUDED_

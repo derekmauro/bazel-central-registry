@@ -516,4 +516,4 @@
 /* Define to `int' if <sys/types.h> does not define. */
 #define EVENT__ssize_t ssize_t
 
-#endif /* \EVENT2_EVENT_CONFIG_APPLE_H_INCLUDED_ */
+#endif /* EVENT2_EVENT_CONFIG_APPLE_H_INCLUDED_ */
